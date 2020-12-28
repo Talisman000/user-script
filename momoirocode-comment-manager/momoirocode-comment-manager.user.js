@@ -45,10 +45,7 @@ window.onload = function(){
 
 }
 function onUnvisibleButtonClick(e){
-    console.log(e);
-    console.log(e.path[1]);
     let commentNumber = e.path[1].textContent.split('.')[0];
-    console.log(commentNumber);
     updateData(commentNumber);
     let comment = e.path[2];
     comment.children[2].textContent = "非表示にしました";
@@ -57,7 +54,6 @@ function onUnvisibleButtonClick(e){
 function updateData(number){
     let c = document.cookie;
     c = c.split('; ').find(e => e.indexOf(`invisibleList-${articleId}`) !== -1);
-    console.log(c);
     let invisibleValue;
     if(c === undefined){
         document.cookie = `invisibleList-${articleId}=${number}`;
@@ -68,8 +64,6 @@ function updateData(number){
         invisibleIdList = invisibleIdList.filter(function (x, i, self) {
             return self.indexOf(x) === i;
         });
-        console.log(invisibleIdList.toString());
         document.cookie = `invisibleList-${articleId}=${invisibleIdList}`;
     }
-    console.log(document.cookie);
 }
